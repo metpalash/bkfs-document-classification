@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+                body {margin: 6pt; text-align: center;}
+                .form-control {max-width: 500px; margin: auto}
+                #input {margin: auto}
+        </style>
+        <title>Black Knight Document Classification App</title>
+    </head>
+    <body>
+    <h1>Document Classification App</h1>
+    <div class="form-group">
+        <label>Input text to be analyzed:</label>
+        <input type="url" class="form-control" id="input" value="Enter Document Text">
+        <button type="submit" class="btn btn-primary"  style='margin-top:6pt' onclick='submit()'>Predict</button>
+    </div>
+    <div id='response'>
+    </div>
+    <script type="text/Javascript">
+        function submit() {
+            pred = document.getElementById("response")
+            var input = document.getElementById("input").value
+            pred.innerHTML = "<h2>Loading...</h2>";
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 400) { pred.innerHTML = "<h2>Please input valid text</h2>"; } 
+                    else if (xhr.status === 200) { pred.innerHTML = "<h8>a</h8>:" + xhr.response; } 
+                    else { pred.innerHTML = "<h2>Error</h2>"; }
+                }
+            }
+            var url1 = "https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict/";
+            //var params = "textData="+input;
+
+            xhr.open("POST", url1, true);
+            xhr.send(JSON.stringify({words: input}));
+        }
+        submit();
+        document.getElementById('input').onkeydown = function(e){
+            if(e.keyCode == 13){
+                submit()
+            }
+        };
+    </script>
+</body>
+</html>

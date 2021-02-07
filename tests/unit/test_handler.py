@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from hello_world import app
+from lambda_helper import app
 
 
 @pytest.fixture()
@@ -10,7 +10,7 @@ def apigw_event():
     """ Generates API GW Event"""
 
     return {
-        "body": '{ "test": "body"}',
+        "body": '{ "words": "this is a test"}',
         "resource": "/{proxy+}",
         "requestContext": {
             "resourceId": "123456",
@@ -34,7 +34,7 @@ def apigw_event():
             },
             "stage": "prod",
         },
-        "queryStringParameters": {"foo": "bar"},
+        "queryStringParameters": {"words": "bar"},
         "headers": {
             "Via": "1.1 08f323deadbeefa7af34d5feb414ce27.cloudfront.net (CloudFront)",
             "Accept-Language": "en-US,en;q=0.8",
@@ -68,6 +68,6 @@ def test_lambda_handler(apigw_event, mocker):
     data = json.loads(ret["body"])
 
     assert ret["statusCode"] == 200
-    assert "message" in ret["body"]
-    assert data["message"] == "hello world"
+    assert "prediction" in ret["body"]
+    assert "confidence" in ret["body"]
     # assert "location" in data.dict_keys()
