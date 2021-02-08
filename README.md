@@ -9,7 +9,7 @@ We need to train a document classification model. Deploy the model to a public c
 
   - Restful Api: ```lambda_helper/```
 
-  - Front end Page: ```front_end/```
+  - FrontEnd Page: ```front_end/```
 
 The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project.
 
@@ -126,3 +126,27 @@ From our experiments we can see that the tested models give a overall high accur
 
 ##### Best Performers-
 SGD and LinearSVM
+
+##### Classification Report-
+
+SGDClassifier accuracy : 0.875876492121598
+                         precision    recall  f1-score   support
+
+            APPLICATION       0.68      0.83      0.75        47
+                   BILL       0.92      0.85      0.88      2544
+            BILL BINDER       0.28      0.46      0.35        71
+                 BINDER       0.87      0.89      0.88      2054
+    CANCELLATION NOTICE       0.87      0.90      0.88      2358
+     CHANGE ENDORSEMENT       0.87      0.90      0.89       181
+            DECLARATION       0.51      0.33      0.40       227
+   DELETION OF INTEREST       0.92      0.91      0.92      1154
+      EXPIRATION NOTICE       0.80      0.89      0.84       142
+INTENT TO CANCEL NOTICE       0.65      0.64      0.64        61
+     NON-RENEWAL NOTICE       0.85      0.93      0.89       150
+          POLICY CHANGE       0.85      0.86      0.85      2399
+   REINSTATEMENT NOTICE       0.93      0.97      0.95      1010
+         RETURNED CHECK       0.91      0.92      0.91       168
+
+               accuracy                           0.88     12566
+              macro avg       0.78      0.80      0.79     12566
+           weighted avg       0.87      0.87      0.88     12566
