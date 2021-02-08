@@ -4,12 +4,15 @@
 This dataset represents the output of the OCR stage of our data pipeline. 
 We need to train a document classification model. Deploy the model to a public cloud platform (AWS/Google/Azure/Heroku) as a webservice with a simple ui.
 
-### Project Folder Structure -
-Model Specific Files
+###### Project Folder Structure -
+Model Specific Files:
+
 ```ml/```
-Restful Api
+Restful Api:
+
 ```lambda_helper/```
-Front end Page
+Front end Page:
+
 ```front_end/```
 
 
