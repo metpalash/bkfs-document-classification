@@ -39,27 +39,27 @@ curl --location --request POST 'https://et9cl4lp4l.execute-api.us-east-1.amazona
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI.
 To deploy the code to AWS
 
-The project is created with: Python 3.6
-libraries: Scikit-learn, Pandas, Numpy, Seaborn, matplotlib, joblib, boto3.
-You can use requirements.txt to create a venv
+The project is created with: ```Python 3.6```
+libraries: ```Scikit-learn, Pandas, Numpy, Seaborn, matplotlib, joblib, boto3```
+You can use ```requirements.txt``` to create a venv
 
-##### Clone the Git Repo -
+ - ##### Clone the Git Repo -
 ```bash
 git clone https://github.com/metpalash/bkfs-document-classification.git
 ```
 
-##### Stage data - 
+ - ##### Stage data - 
 Put the data in  ```ml/data``` directory as 'shuffled-full-set-hashed.csv'
 
-##### Train Model
+ - ##### Train Model
 Navigate to ml folder and run, this will train the model and export the model as '.joblib'
 ```bash
 python train.py
 ```
-##### Deploy Model
+ - ##### Deploy Model
 Deploy the model to S3 bucket.
 
-##### Env Variables
+ - ##### Env Variables
 Update the enviornment variables in template.yaml file with the ones you have - 
 ```
 MODEL_BUCKET_NAME: bkfsmodel
@@ -67,17 +67,17 @@ MODEL_FILE_NAME_KEY: mlSGDClassifier.joblib
 
 ```
 
-##### AWS SAM Installation
+ - ##### AWS SAM Installation
 Download the SAM CLI & Docker
 
 * SAM CLI - [Install the SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
 * Docker - [Install Docker community edition](https://hub.docker.com/search/?type=edition&offering=community)
 
-##### Create an AWS ECR Repository - 
+- ##### Create an AWS ECR Repository - 
 ```bash
 aws ecr create-repository --repository-name bkfs-doc-class-repo --image-tag-mutability IMMUTABLE --image-scanning-configuration scanOnPush=true
 ```
-##### Build and Deploy AWS lambda fn and Resrouces
+- ##### Build and Deploy AWS lambda fn and Resrouces
 Run the following Command - enter the ecr repository from previous step during
 deploy process whenever asked -
 ```bash
@@ -85,7 +85,7 @@ sam build
 sam deploy --guided
 ```
 
-##### UI Deploy
+- ##### UI Deploy
 UI can be run both locally as well as you can deploy to S3 bucket as static website.
 Please update the API endpoint from the previous step to the index.html 
 ```
