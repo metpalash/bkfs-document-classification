@@ -154,7 +154,7 @@ INTENT TO CANCEL NOTICE       0.65      0.64      0.64        61
            weighted avg       0.87      0.87      0.88     12566
 ```
 
-```
+
 BINDER	CANCELLATION NOTICE	APPLICATION	BILL	REINSTATEMENT NOTICE	RETURNED CHECK	DELETION OF INTEREST	POLICY CHANGE NON-RENEWAL NOTICE	BILL BINDER	DECLARATION	CHANGE ENDORSEMENT	EXPIRATION NOTICE	INTENT TO CANCEL NOTICE
 |-----------------------|
 BINDER	                |1918|	4	    4	  49	  0	    1	  0	    140	  1	0	9	2	0	0
@@ -171,4 +171,4 @@ DECLARATION	            |105|  10	  1	  35	  3	    1	  6	    45	  1	0	22	0	0	0
 CHANGE ENDORSEMENT	    |4|  2	    0	  3	    0	    0	  0	    33	  0	0	0	169	0	0
 EXPIRATION NOTICE	      |3|  5	    0	  40	  0	    0	  4	    4	    0	0	0	0	130	0
 INTENT TO CANCEL NOTICE	|1|  15	  0	  14	  1	    0	  0	    1	    1	0	0	0	0	26
-```
+
