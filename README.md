@@ -156,6 +156,7 @@ INTENT TO CANCEL NOTICE       0.65      0.64      0.64        61
 
 ##### Confusion Matrix-
 
+```
 
 |                         | BINDER | CANCELLATION NOTICE | APPLICATION | BILL | REINSTATEMENT NOTICE | RETURNED CHECK | DELETION OF INTEREST | POLICY CHANGE | NON-RENEWAL NOTICE | BILL BINDER | DECLARATION | CHANGE ENDORSEMENT | EXPIRATION NOTICE | INTENT TO CANCEL NOTICE |
 |-------------------------|--------|---------------------|-------------|------|----------------------|----------------|----------------------|---------------|--------------------|-------------|-------------|--------------------|-------------------|-------------------------|
@@ -174,3 +175,4 @@ INTENT TO CANCEL NOTICE       0.65      0.64      0.64        61
 | EXPIRATION NOTICE       | 3      | 5                   | 0           | 40   | 0                    | 0              | 4                    | 4             | 0                  | 0           | 0           | 0                  | 130               | 0                       |
 | INTENT TO CANCEL NOTICE | 1      | 15                  | 0           | 14   | 1                    | 0              | 0                    | 1             | 1                  | 0           | 0           | 0                  | 0                 | 26                      |
 
+```
