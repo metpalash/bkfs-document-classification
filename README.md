@@ -98,27 +98,24 @@ var url1 = "https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict/
 
 - ```ml/data_exploration.ipynb```:
 
-I started with data analysis and data pre-processing from our dataset. 
+  I started with data analysis and data pre-processing from our dataset. 
 
 - ```ml/model.ipynb``` :
 
-Then I have used CountVectorizer and TF-IDF to convert the data into vectors. 
+  Then I have used CountVectorizer and TF-IDF to convert the data into vectors. 
+  I have also experimented with several Machine Learning algorithms: Logistic Regression, Linear SVM, Multinomial Naive Bayes, Random Forest, KNeighbour Classifier, Stochastic Gradient Descent and MLP. 
+  For the modeling i have utilized sklearn pipeline for all the modeling steps.
+  I also tried to include SelectKBest feature using chi2 to extract relevant features from the sparse data, but it didnt help
+  much in improving the overall accuracy.
 
-I have also experimented with several Machine Learning algorithms: Logistic Regression, Linear SVM, Multinomial Naive Bayes, Random Forest, KNeighbour Classifier, Stochastic Gradient Descent and MLP. 
-
-For the modeling i have utilized sklearn pipeline for all the modeling steps.
-
-I also tried to include SelectKBest feature using chi2 to extract relevant features from the sparse data, but it didnt help
-much in improving the overall accuracy.
-
-After getting the best pick among the algorithms, i have performed grid search to perform the hyperparameter tuning.
+  After getting the best pick among the algorithms, i have performed grid search to perform the hyperparameter tuning.
 
 - ```ml/train.py```:
 
-This is a python file you can run to train the best model identified in previous step.
-It will train from the raw csv and export the model as '*.joblib'.
+  This is a python file you can run to train the best model identified in previous step.
+  It will train from the raw csv and export the model as '*.joblib'.
 
-From our experiments we can see that the tested models give a overall high accuracy . The SVM (Count Vector +TF-IDF) model and SGD Classifier(Count Vector +TF-IDF) model gives the best accuracy of validation set.
+  From our experiments we can see that the tested models give a overall high accuracy . The SVM (Count Vector +TF-IDF) model and SGD Classifier(Count Vector +TF-IDF) model gives the best accuracy of validation set.
 
 | Model              | Embeddings    | Accuracy |
 | ------------------ |:-------------:| --------:|
