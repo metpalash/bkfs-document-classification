@@ -15,6 +15,7 @@
     </head>
     <body>
     <h1>Document Classification App</h1>
+    <br>
     <div class="form-group">
         <label>Input text to be analyzed:</label>
         <input type="url" class="form-control" id="input" value="Enter Document Text">
@@ -31,8 +32,15 @@
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 400) { pred.innerHTML = "<h2>Please input valid text</h2>"; } 
-                    else if (xhr.status === 200) { pred.innerHTML = "<h8></h8>:" + xhr.response; } 
-                    else { pred.innerHTML = "<h2>Error</h2>"; }
+                    else if (xhr.status === 200) 
+                    { 
+                        const obj1 = JSON.parse(xhr.response);
+                        //pred.innerHTML = "<h8></h8>:" + xhr.response; 
+                        pred.innerHTML = "<br><b><h8>Prediction</h8>:</b> " + obj1.prediction + "<br><b><h8>Confidence</h8>: </b>" + obj1.confidence;
+                
+                    
+                    } 
+                    else { pred.innerHTML = "<h2>Error - Cold Starting Lambda try again</h2>"; }
                 }
             }
             ///////////Put the Api path here //////////////
