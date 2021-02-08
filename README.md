@@ -5,25 +5,25 @@ This dataset represents the output of the OCR stage of our data pipeline.
 We need to train a document classification model. Deploy the model to a public cloud platform (AWS/Google/Azure/Heroku) as a webservice with a simple ui.
 
 ### Project Folder Structure -
--Model Specific Files: ```ml/```
+  - Model Specific Files: ```ml/```
 
--Restful Api: ```lambda_helper/```
+  - Restful Api: ```lambda_helper/```
 
--Front end Page: ```front_end/```
+  - Front end Page: ```front_end/```
 
 The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project.
 
-###### Prediction ui
+#### Prediction UI
 ```
 https://bkfsmodel.s3.amazonaws.com/index.html
 ```
 
-###### Rest API
+#### Rest API
 ```
 https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict/
 ```
 
-###### Sample Curl Request
+#### Sample Curl Request
 GET - 
 ```
 curl --request GET 'https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict?words=putDocumentTextHere'
@@ -94,12 +94,14 @@ var url1 = "https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict/
 I started with data analysis and data pre-processing from our dataset. 
 
 ```ml/model.ipynb``` :
+
 Then I have used CountVectorizer and TF-IDF to convert the data into vectors. I have also experimented with several Machine Learning algorithms: Logistic Regression, Linear SVM, Multinomial Naive Bayes, Random Forest, KNeighbour Classifier, Stochastic Gradient Descent and MLP. For the modeling i have utilized sklearn pipeline for all the modeling steps.
 I also tried to include SelectKBest feature using chi2 to extract relevant features from the sparse data, but it didnt help
 much in improving the overall accuracy.
 After getting the best pick among the algorithms, i have performed grid search to perform the hyperparameter tuning.
 
-```ml/train.py```
+```ml/train.py```:
+
 This is a python file you can run to train the best model identified in previous step.
 It will train from the raw csv and export the model as '*.joblib'.
 
