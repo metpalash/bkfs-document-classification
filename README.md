@@ -194,4 +194,4 @@ INTENT TO CANCEL NOTICE       0.65      0.64      0.64        61
 
 ##### Confusion Matrix-
 
-![Alt text](https://github.com/metpalash/bkfs-document-classification/blob/master/images/test_confusion_matrix.png "Optional Title")
+![Alt text](https://github.com/metpalash/bkfs-document-classification/blob/master/images/test_confusion_matrix.png "Test Confusion Matrix")
