@@ -13,7 +13,7 @@ import os
 
 
 
-def train(data_path='../data/shuffled-full-set-hashed.csv',model_nm = 'SGDClassifier',filepath=None):
+def train(data_path='./data/shuffled-full-set-hashed.csv',model_nm = 'SGDClassifier',filepath=None):
     
     #Step-1 - Data Loading
     #data load
@@ -104,4 +104,5 @@ def train(data_path='../data/shuffled-full-set-hashed.csv',model_nm = 'SGDClassi
 
     return True
 
-
+if __name__ == '__main__':
+    train()

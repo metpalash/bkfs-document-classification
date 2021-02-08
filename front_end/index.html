@@ -31,7 +31,7 @@
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 400) { pred.innerHTML = "<h2>Please input valid text</h2>"; } 
-                    else if (xhr.status === 200) { pred.innerHTML = "<h8>a</h8>:" + xhr.response; } 
+                    else if (xhr.status === 200) { pred.innerHTML = "<h8></h8>:" + xhr.response; } 
                     else { pred.innerHTML = "<h2>Error</h2>"; }
                 }
             }

@@ -24,7 +24,7 @@ Resources:
       Environment:
         Variables:
           MODEL_BUCKET_NAME: bkfsmodel
-          MODEL_FILE_NAME_KEY: bkfs-test-svc.joblib
+          MODEL_FILE_NAME_KEY: mlSGDClassifier.joblib
       Events:
         Predict:
           Type: Api

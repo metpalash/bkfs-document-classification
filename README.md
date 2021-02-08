@@ -11,14 +11,24 @@ We need to train a document classification model. Deploy the model to a public c
 
 -Front end Page: ```front_end/```
 
-### Prediction ui
+###### Prediction ui
 ```
 https://bkfsmodel.s3.amazonaws.com/index.html
 ```
 
-### Rest API
+###### Rest API
 ```
 https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict/
+```
+
+###### Sample Curl Request
+GET - 
+```
+curl --request GET 'https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict?words=putDocumentTextHere'
+```
+POST - 
+```
+
 ```
 
 ###### Code Deploy to AWS -
@@ -98,41 +108,6 @@ This project contains source code and supporting files for a serverless applicat
 
 The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
 
-
-## Use the SAM CLI to build and test locally
-
-Build your application with the `sam build` command.
-
-```bash
-bkfs-document-classification$ sam build
-```
-
-The SAM CLI builds a docker image from a Dockerfile and then installs dependencies defined in `hello_world/requirements.txt` inside the docker image. The processed template file is saved in the `.aws-sam/build` folder.
-
-Test a single function by invoking it directly with a test event. An event is a JSON document that represents the input that the function receives from the event source. Test events are included in the `events` folder in this project.
-
-Run functions locally and invoke them with the `sam local invoke` command.
-
-```bash
-bkfs-document-classification$ sam local invoke HelloWorldFunction --event events/event.json
-```
-
-The SAM CLI can also emulate your application's API. Use the `sam local start-api` to run the API locally on port 3000.
-
-```bash
-bkfs-document-classification$ sam local start-api
-bkfs-document-classification$ curl http://localhost:3000/
-```
-
-
-## Unit tests
-
-Tests are defined in the `tests` folder in this project. Use PIP to install the [pytest](https://docs.pytest.org/en/latest/) and run unit tests from your local machine.
-
-```bash
-bkfs-document-classification$ pip install pytest pytest-mock --user
-bkfs-document-classification$ python -m pytest tests/ -v
-```
 
 Recommendations:
 Here are some recommendations that can be explored to further improve the analysis:
