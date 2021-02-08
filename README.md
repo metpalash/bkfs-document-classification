@@ -11,6 +11,8 @@ We need to train a document classification model. Deploy the model to a public c
 
 -Front end Page: ```front_end/```
 
+The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project.
+
 ###### Prediction ui
 ```
 https://bkfsmodel.s3.amazonaws.com/index.html
@@ -28,18 +30,41 @@ curl --request GET 'https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/
 ```
 POST - 
 ```
-
+curl --location --request POST 'https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict' \
+--header 'Content-Type: application/json' \
+--data-raw '{"words":"putDocumentTextHere"}'
 ```
 
 ###### Code Deploy to AWS -
+This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI.
 To deploy the code to AWS
+
+The project is created with: Python 3.6
+libraries: Scikit-learn, Pandas, Numpy, Seaborn, matplotlib, joblib, boto3.
+You can use requirements.txt to create a venv
 
 Clone the Git Repo -
 ```bash
 git clone https://github.com/metpalash/bkfs-document-classification.git
 ```
 
-Download the SAM CLI/Docker
+Put the data in  ```ml/data``` directory as 'shuffled-full-set-hashed.csv'
+
+Navigate to ml folder and run, this will train the model and export the model as '.joblib'
+```bash
+python train.py
+```
+
+Deploy the model to S3 bucket.
+
+Update the enviornment variables in template.yaml file with the ones you have - 
+```
+MODEL_BUCKET_NAME: bkfsmodel
+MODEL_FILE_NAME_KEY: mlSGDClassifier.joblib
+
+```
+
+Download the SAM CLI & Docker
 
 * SAM CLI - [Install the SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
 * Docker - [Install Docker community edition](https://hub.docker.com/search/?type=edition&offering=community)
@@ -56,69 +81,37 @@ sam build
 sam deploy --guided
 ```
 
+UI can be run both locally as well as you can deploy to S3 bucket as static website.
+Please update the API endpoint from the previous step to the index.html 
+```
+var url1 = "https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict/";
+```
 
+Summary - 
+```ml/data_exploration.ipynb```:
 
-Project contains:
+I started with data analysis and data pre-processing from our dataset. 
 
-lambda_helper/*
-For the lambda helper function
+```ml/model.ipynb``` :
+Then I have used CountVectorizer and TF-IDF to convert the data into vectors. I have also experimented with several Machine Learning algorithms: Logistic Regression, Linear SVM, Multinomial Naive Bayes, Random Forest, KNeighbour Classifier, Stochastic Gradient Descent and MLP. For the modeling i have utilized sklearn pipeline for all the modeling steps.
+I also tried to include SelectKBest feature using chi2 to extract relevant features from the sparse data, but it didnt help
+much in improving the overall accuracy.
+After getting the best pick among the algorithms, i have performed grid search to perform the hyperparameter tuning.
 
-app.py - The lambda helper function
+```ml/train.py```
+This is a python file you can run to train the best model identified in previous step.
+It will train from the raw csv and export the model as '*.joblib'.
 
-ml/*
-For all model specific files
+From our experiments we can see that the tested models give a overall high accuracy . The SVM (Count Vector +TF-IDF) model and SGD Classifier(Count Vector +TF-IDF) model gives the best accuracy of validation set.
 
-For all the data exploration and preprocessing - 
-data_exploration.ipynb
+| Model              | Embeddings    | Accuracy |
+| ------------------ |:-------------:| --------:|
+| Naive Bayes        | CV+TF-IDF     | 0.73     |
+| Random Forest      | CV+TF-IDF     | 0.85     |
+| SGD                | CV+TF-IDF     | 0.88     |
+| Logistic Regression| CV+TF-IDF     | 0.86     |
+| LinearSVM          | CV+TF-IDF     | 0.88     |
+| KNeighbour         | CV+TF-IDF     | 0.82     |
 
-For Modeling-
-model.ipynb
-
-For training the final model-
-train.py
-
-Summary
-We begin with data analysis and data pre-processing from our dataset. Then we have used a few combination of text representation such as BoW and TF-IDF and we have trained the word2vec and doc2vec models from our data. We have experimented with several Machine Learning algorithms: Logistic Regression, Linear SVM, Multinomial Naive Bayes, Random Forest, Gradient Boosting and MLP and Convolutional Neural Network (CNN) using different combinations of text representations and embeddings.
-
-From our experiments we can see that the tested models give a overall high accuracy and similar results for our problem. The SVM (BOW +TF-IDF) model and MLP model give the best accuracy of validation set. Logistic regression performed very well both with BOW +TF-IDF and Doc2vec and achieved similar accuracy as MLP. CNN with word embeddings also has a very comparable result (0.93) to MLP.
-
-Model	Embeddings	Accuracy
-Logistic Regression	BOW +TF-IDF	0.91
-SVM	BOW +TF-IDF	0.93
-Naive Bayes	BOW +TF-IDF	0.90
-Random Forest	BOW +TF-IDF	0.91
-Gradient Boosting	BOW +TF-IDF	0.91
-Logistic Regression	Doc2vec (DBOW)	0.91
-Logistic Regression	Doc2vec (DM)	0.89
-SVM	Doc2vec (DBOW)	0.93
-MLP	Word embedding	0.93
-CNN	Word embedding	0.93
-The project is created with:
-Python 3.6
-libraries: NLTK, Gensim, Keras, Scikit-learn, Pandas, Numpy, Seaborn, pyLDAvis.
-Running the project:
-To run this project use Jupyter Notebook or Google Colab.
-
-This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
-
-- hello_world - Code for the application's Lambda function and Project Dockerfile.
-- events - Invocation events that you can use to invoke the function.
-- tests - Unit tests for the application code. 
-- template.yaml - A template that defines the application's AWS resources.
-
-The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
-
-
-Recommendations:
-Here are some recommendations that can be explored to further improve the analysis:
-
-I havent used sklearn's pipeline function which gives a lot of order of the steps involved in training, predicting the classifier.
-Using Functional programming, we can form a general function which can be used to pass classifiers and to derive the results. I have attached a separate notebook which contains such code that I wrote.
-The current version of the code can be made much more better by making it more modular and defining classes. If required, I can expedite on that as well.
-I've made use of the state of the art text classification algorithms after going through series of research papers. We can also use Neural networks (MLPs) as well and if needed, it can be implemented.
-Using latent factorization methods like Non-negative matrix factorization, we can find higher level features that can then be used during classification. I have done one such analysis by applying sparse coding on a transactional database to find out basis vectors/dictionary which improved classification results. The same can be done here as well.
-We can further augment the feature extraction process by assigning different weights to the text in different positions e.g. assigning more weight to the text in title and the text at the starting sections of the body. This could be used to explore if it improves the results or not.
-We can also explore forming ngram features to see if those generate any better results or not.
-Similarly, we can use advanced methodology like word2vec to find out words that occur together and can use them in the features extraction process as well.
-We can experiment with other feature selection methods like Mutual Information gain to see which one gives better results.
-Another method to validate the results of classifiers can be Area under the curve (AUC) of ROC curve. Using One-Vs-All classification, we can form AUC to further assess the performance of our classifiers.
+Best Performers-
+SGD and LinearSVM
