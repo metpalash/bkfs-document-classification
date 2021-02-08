@@ -156,18 +156,18 @@ INTENT TO CANCEL NOTICE       0.65      0.64      0.64        61
 
 ```
 BINDER	CANCELLATION NOTICE	APPLICATION	BILL	REINSTATEMENT NOTICE	RETURNED CHECK	DELETION OF INTEREST	POLICY CHANGE NON-RENEWAL NOTICE	BILL BINDER	DECLARATION	CHANGE ENDORSEMENT	EXPIRATION NOTICE	INTENT TO CANCEL NOTICE
-BINDER	                1918|	4	    4	  49	  0	    1	  0	    140	  1	0	9	2	0	0
-CANCELLATION NOTICE	    18|	  2138	2	  125	  34	  1	  61	  48	  6	0	0	0	0	5
-APPLICATION	            10|	  0	    24	7	    0	    0	  0	    6	    0	0	0	1	0	0
-BILL	                  75|	  198	  3	  4174	5	    2	  1	    155	  0	6	1	0	5	1
-REINSTATEMENT NOTICE	  7|	    18	  0	  15	  1025	0	  2	    19	  1	0	0	0	1	0
-RETURNED CHECK	        6|	    1	    0	  5	    0	    164	0	    14	  0	0	0	0	0	0
-DELETION OF INTEREST	  3|    105	  0	  0	    2	    0	  1034	17	  0	0	0	1	0	0
-POLICY CHANGE	          126|	  25	  4	  111	  15	  2	  9	    2223	3	4	3	12	7	0
-NON-RENEWAL NOTICE	    0|  19	  0	  0	    0	    0	  2	    9	    123	0	0	0	1	0
-BILL BINDER	            7|  2	    0	  36	  0	    0	  0	    17	  0	11	0	0	0	0
-DECLARATION	            105|  10	  1	  35	  3	    1	  6	    45	  1	0	22	0	0	0
-CHANGE ENDORSEMENT	    4|  2	    0	  3	    0	    0	  0	    33	  0	0	0	169	0	0
-EXPIRATION NOTICE	      3|  5	    0	  40	  0	    0	  4	    4	    0	0	0	0	130	0
-INTENT TO CANCEL NOTICE	1|  15	  0	  14	  1	    0	  0	    1	    1	0	0	0	0	26
+BINDER	                |1918|	4	    4	  49	  0	    1	  0	    140	  1	0	9	2	0	0
+CANCELLATION NOTICE	    |18|	  2138	2	  125	  34	  1	  61	  48	  6	0	0	0	0	5
+APPLICATION	            |10|	  0	    24	7	    0	    0	  0	    6	    0	0	0	1	0	0
+BILL	                  |75|	  198	  3	  4174	5	    2	  1	    155	  0	6	1	0	5	1
+REINSTATEMENT NOTICE	  |7|	    18	  0	  15	  1025	0	  2	    19	  1	0	0	0	1	0
+RETURNED CHECK	        |6|	    1	    0	  5	    0	    164	0	    14	  0	0	0	0	0	0
+DELETION OF INTEREST	  |3|    105	  0	  0	    2	    0	  1034	17	  0	0	0	1	0	0
+POLICY CHANGE	          |126|	  25	  4	  111	  15	  2	  9	    2223	3	4	3	12	7	0
+NON-RENEWAL NOTICE	    |0|  19	  0	  0	    0	    0	  2	    9	    123	0	0	0	1	0
+BILL BINDER	            |7|  2	    0	  36	  0	    0	  0	    17	  0	11	0	0	0	0
+DECLARATION	            |105|  10	  1	  35	  3	    1	  6	    45	  1	0	22	0	0	0
+CHANGE ENDORSEMENT	    |4|  2	    0	  3	    0	    0	  0	    33	  0	0	0	169	0	0
+EXPIRATION NOTICE	      |3|  5	    0	  40	  0	    0	  4	    4	    0	0	0	0	130	0
+INTENT TO CANCEL NOTICE	|1|  15	  0	  14	  1	    0	  0	    1	    1	0	0	0	0	26
 ```
