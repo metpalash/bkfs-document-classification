@@ -190,3 +190,6 @@ INTENT TO CANCEL NOTICE       0.65      0.64      0.64        61
 | INTENT TO CANCEL NOTICE | 1      | 15                  | 0           | 14   | 1                    | 0              | 0                    | 1             | 1                  | 0           | 0           | 0                  | 0                 | 26                      |
 
 ```
+
+
+![Alt text](https://github.com/metpalash/bkfs-document-classification/blob/master/images/test_confusion_matrix.png "Optional Title")
