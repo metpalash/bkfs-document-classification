@@ -40,7 +40,9 @@ This project contains source code and supporting files for a serverless applicat
 To deploy the code to AWS
 
 The project is created with: ```Python 3.6```
+
 libraries: ```Scikit-learn, Pandas, Numpy, Seaborn, matplotlib, joblib, boto3```
+
 You can use ```requirements.txt``` to create a venv
 
  - ##### Clone the Git Repo -
