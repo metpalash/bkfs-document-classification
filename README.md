@@ -1,10 +1,10 @@
 # BKFS Document Classification
 
-###### Problem Description - 
+### Problem Description - 
 This dataset represents the output of the OCR stage of our data pipeline. 
 We need to train a document classification model. Deploy the model to a public cloud platform (AWS/Google/Azure/Heroku) as a webservice with a simple ui.
 
-###### Project Folder Structure -
+### Project Folder Structure -
 -Model Specific Files: ```ml/```
 
 -Restful Api: ```lambda_helper/```
@@ -35,7 +35,7 @@ curl --location --request POST 'https://et9cl4lp4l.execute-api.us-east-1.amazona
 --data-raw '{"words":"putDocumentTextHere"}'
 ```
 
-###### Code Deploy to AWS -
+### Code Deploy to AWS -
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI.
 To deploy the code to AWS
 
@@ -87,7 +87,8 @@ Please update the API endpoint from the previous step to the index.html
 var url1 = "https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict/";
 ```
 
-Summary - 
+### Summary -
+
 ```ml/data_exploration.ipynb```:
 
 I started with data analysis and data pre-processing from our dataset. 
