@@ -8,9 +8,11 @@ We need to train a document classification model. Deploy the model to a public c
 Model Specific Files:
 
 ```ml/```
+
 Restful Api:
 
 ```lambda_helper/```
+
 Front end Page:
 
 ```front_end/```
