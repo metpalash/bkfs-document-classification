@@ -1,4 +1,88 @@
-# bkfs-document-classification
+# BKFS Document Classification
+
+###### Problem Description - 
+This dataset represents the output of the OCR stage of our data pipeline. 
+We need to train a document classification model. Deploy the model to a public cloud platform (AWS/Google/Azure/Heroku) as a webservice with a simple ui.
+
+### Project Folder Structure -
+Model Specific Files
+```ml/```
+Restful Api
+```lambda_helper/```
+Front end Page
+```front_end/```
+
+
+
+
+
+
+aws ecr create-repository --repository-name bkfs-doc-class-repo --image-tag-mutability IMMUTABLE --image-scanning-configuration scanOnPush=true
+
+ "repository": {
+        "repositoryArn": "arn:aws:ecr:us-east-1:295040540869:repository/bkfs-doc-class-repo",
+        "registryId": "295040540869",
+        "repositoryName": "bkfs-doc-class-repo",
+        "repositoryUri": "295040540869.dkr.ecr.us-east-1.amazonaws.com/bkfs-doc-class-repo",
+        "createdAt": "2021-02-06T12:24:04-05:00",
+        "imageTagMutability": "IMMUTABLE",
+        "imageScanningConfiguration": {
+            "scanOnPush": true
+        },
+        "encryptionConfiguration": {
+            "encryptionType": "AES256"
+        }
+    }
+
+Multi-Class Text Classification of products based on their description
+General info
+The project includes multi-class text classification with Machine Learning and Deep Learning algorithms, text classification with Doc2vec model, creation Word2vec model, Topic Modeling (with LDA analysis) and EDA analysis (data exploration, data aggregation and cleaning data).
+
+The dataset comes from http://makeup-api.herokuapp.com/ and has been obtained from my previous project at Extracting Data using API.
+
+Motivation
+The aim of the project is multi-class text classification to make-up products based on their description and categories. Based on given text as an input, we have predicted what would be the category. We have five types of categories corresponding to different makeup products. In our analysis we used a different methods for a feature extraction (such as Word2vec, Doc2vec) and various Machine Learning/Deep Lerning algorithms to get more accurate predictions and choose the most accurate one for our issue.
+
+Project contains:
+
+lambda_helper/*
+For the lambda helper function
+
+app.py - The lambda helper function
+
+ml/*
+For all model specific files
+
+For all the data exploration and preprocessing - 
+data_exploration.ipynb
+
+For Modeling-
+model.ipynb
+
+For training the final model-
+train.py
+
+Summary
+We begin with data analysis and data pre-processing from our dataset. Then we have used a few combination of text representation such as BoW and TF-IDF and we have trained the word2vec and doc2vec models from our data. We have experimented with several Machine Learning algorithms: Logistic Regression, Linear SVM, Multinomial Naive Bayes, Random Forest, Gradient Boosting and MLP and Convolutional Neural Network (CNN) using different combinations of text representations and embeddings.
+
+From our experiments we can see that the tested models give a overall high accuracy and similar results for our problem. The SVM (BOW +TF-IDF) model and MLP model give the best accuracy of validation set. Logistic regression performed very well both with BOW +TF-IDF and Doc2vec and achieved similar accuracy as MLP. CNN with word embeddings also has a very comparable result (0.93) to MLP.
+
+Model	Embeddings	Accuracy
+Logistic Regression	BOW +TF-IDF	0.91
+SVM	BOW +TF-IDF	0.93
+Naive Bayes	BOW +TF-IDF	0.90
+Random Forest	BOW +TF-IDF	0.91
+Gradient Boosting	BOW +TF-IDF	0.91
+Logistic Regression	Doc2vec (DBOW)	0.91
+Logistic Regression	Doc2vec (DM)	0.89
+SVM	Doc2vec (DBOW)	0.93
+MLP	Word embedding	0.93
+CNN	Word embedding	0.93
+The project is created with:
+Python 3.6
+libraries: NLTK, Gensim, Keras, Scikit-learn, Pandas, Numpy, Seaborn, pyLDAvis.
+Running the project:
+To run this project use Jupyter Notebook or Google Colab.
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
 
@@ -28,16 +112,6 @@ sam build
 sam deploy --guided
 ```
 
-The first command will build a docker image from a Dockerfile and then copy the source of your application inside the Docker image. The second command will package and deploy your application to AWS, with a series of prompts:
-
-* **Stack Name**: The name of the stack to deploy to CloudFormation. This should be unique to your account and region, and a good starting point would be something matching your project name.
-* **AWS Region**: The AWS region you want to deploy your app to.
-* **Confirm changes before deploy**: If set to yes, any change sets will be shown to you before execution for manual review. If set to no, the AWS SAM CLI will automatically deploy application changes.
-* **Allow SAM CLI IAM role creation**: Many AWS SAM templates, including this example, create AWS IAM roles required for the AWS Lambda function(s) included to access AWS services. By default, these are scoped down to minimum required permissions. To deploy an AWS CloudFormation stack which creates or modified IAM roles, the `CAPABILITY_IAM` value for `capabilities` must be provided. If permission isn't provided through this prompt, to deploy this example you must explicitly pass `--capabilities CAPABILITY_IAM` to the `sam deploy` command.
-* **Save arguments to samconfig.toml**: If set to yes, your choices will be saved to a configuration file inside the project, so that in the future you can just re-run `sam deploy` without parameters to deploy changes to your application.
-
-You can find your API Gateway Endpoint URL in the output values displayed after deployment.
-
 ## Use the SAM CLI to build and test locally
 
 Build your application with the `sam build` command.
@@ -63,31 +137,6 @@ bkfs-document-classification$ sam local start-api
 bkfs-document-classification$ curl http://localhost:3000/
 ```
 
-The SAM CLI reads the application template to determine the API's routes and the functions that they invoke. The `Events` property on each function's definition includes the route and method for each path.
-
-```yaml
-      Events:
-        HelloWorld:
-          Type: Api
-          Properties:
-            Path: /hello
-            Method: get
-```
-
-## Add a resource to your application
-The application template uses AWS Serverless Application Model (AWS SAM) to define application resources. AWS SAM is an extension of AWS CloudFormation with a simpler syntax for configuring common serverless application resources such as functions, triggers, and APIs. For resources not included in [the SAM specification](https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md), you can use standard [AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html) resource types.
-
-## Fetch, tail, and filter Lambda function logs
-
-To simplify troubleshooting, SAM CLI has a command called `sam logs`. `sam logs` lets you fetch logs generated by your deployed Lambda function from the command line. In addition to printing the logs on the terminal, this command has several nifty features to help you quickly find the bug.
-
-`NOTE`: This command works for all AWS Lambda functions; not just the ones you deploy using SAM.
-
-```bash
-bkfs-document-classification$ sam logs -n HelloWorldFunction --stack-name bkfs-document-classification --tail
-```
-
-You can find more information and examples about filtering Lambda function logs in the [SAM CLI Documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-logging.html).
 
 ## Unit tests
 
@@ -98,16 +147,16 @@ bkfs-document-classification$ pip install pytest pytest-mock --user
 bkfs-document-classification$ python -m pytest tests/ -v
 ```
 
-## Cleanup
+Recommendations:
+Here are some recommendations that can be explored to further improve the analysis:
 
-To delete the sample application that you created, use the AWS CLI. Assuming you used your project name for the stack name, you can run the following:
-
-```bash
-aws cloudformation delete-stack --stack-name bkfs-document-classification
-```
-
-## Resources
-
-See the [AWS SAM developer guide](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) for an introduction to SAM specification, the SAM CLI, and serverless application concepts.
-
-Next, you can use AWS Serverless Application Repository to deploy ready to use Apps that go beyond hello world samples and learn how authors developed their applications: [AWS Serverless Application Repository main page](https://aws.amazon.com/serverless/serverlessrepo/)
+I havent used sklearn's pipeline function which gives a lot of order of the steps involved in training, predicting the classifier.
+Using Functional programming, we can form a general function which can be used to pass classifiers and to derive the results. I have attached a separate notebook which contains such code that I wrote.
+The current version of the code can be made much more better by making it more modular and defining classes. If required, I can expedite on that as well.
+I've made use of the state of the art text classification algorithms after going through series of research papers. We can also use Neural networks (MLPs) as well and if needed, it can be implemented.
+Using latent factorization methods like Non-negative matrix factorization, we can find higher level features that can then be used during classification. I have done one such analysis by applying sparse coding on a transactional database to find out basis vectors/dictionary which improved classification results. The same can be done here as well.
+We can further augment the feature extraction process by assigning different weights to the text in different positions e.g. assigning more weight to the text in title and the text at the starting sections of the body. This could be used to explore if it improves the results or not.
+We can also explore forming ngram features to see if those generate any better results or not.
+Similarly, we can use advanced methodology like word2vec to find out words that occur together and can use them in the features extraction process as well.
+We can experiment with other feature selection methods like Mutual Information gain to see which one gives better results.
+Another method to validate the results of classifiers can be Area under the curve (AUC) of ROC curve. Using One-Vs-All classification, we can form AUC to further assess the performance of our classifiers.
