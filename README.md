@@ -136,9 +136,10 @@ var url1 = "https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict/
 ##### Best Performers-
 SGD and LinearSVM
 
-SGDClassifier
-Accuracy over test data - 0.88
-Accuracy over overall data - 0.90
+SGDClassifier:
+
+- Accuracy over test data - 0.88
+- Accuracy over overall data - 0.90
 
 
 ##### Classification Report-
