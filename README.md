@@ -11,7 +11,7 @@ We need to train a document classification model. Deploy the model to a public c
 
   - FrontEnd Page: ```front_end/```
 
-The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project.
+  - The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project.
 
 #### Prediction UI
 ```
@@ -102,9 +102,15 @@ I started with data analysis and data pre-processing from our dataset.
 
 - ```ml/model.ipynb``` :
 
-Then I have used CountVectorizer and TF-IDF to convert the data into vectors. I have also experimented with several Machine Learning algorithms: Logistic Regression, Linear SVM, Multinomial Naive Bayes, Random Forest, KNeighbour Classifier, Stochastic Gradient Descent and MLP. For the modeling i have utilized sklearn pipeline for all the modeling steps.
+Then I have used CountVectorizer and TF-IDF to convert the data into vectors. 
+
+I have also experimented with several Machine Learning algorithms: Logistic Regression, Linear SVM, Multinomial Naive Bayes, Random Forest, KNeighbour Classifier, Stochastic Gradient Descent and MLP. 
+
+For the modeling i have utilized sklearn pipeline for all the modeling steps.
+
 I also tried to include SelectKBest feature using chi2 to extract relevant features from the sparse data, but it didnt help
 much in improving the overall accuracy.
+
 After getting the best pick among the algorithms, i have performed grid search to perform the hyperparameter tuning.
 
 - ```ml/train.py```:
