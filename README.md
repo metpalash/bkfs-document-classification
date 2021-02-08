@@ -110,6 +110,11 @@ var url1 = "https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict/
 
   After getting the best pick among the algorithms, i have performed grid search to perform the hyperparameter tuning.
 
+
+- ```ml/model_evaluation.ipynb``` :
+  This notebook consist of the model_evaluation metrics on test data as well as overall data
+  
+
 - ```ml/train.py```:
 
   This is a python file you can run to train the best model identified in previous step.
@@ -129,6 +134,11 @@ var url1 = "https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict/
 
 ##### Best Performers-
 SGD and LinearSVM
+
+SGDClassifier
+Accuracy over test data - 0.88
+Accuracy over overall data - 0.90
+
 
 ##### Classification Report-
 
