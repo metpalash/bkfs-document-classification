@@ -130,6 +130,7 @@ SGD and LinearSVM
 ##### Classification Report-
 
 SGDClassifier accuracy : 0.875876492121598
+                         
                          precision    recall  f1-score   support
 
             APPLICATION       0.68      0.83      0.75        47
