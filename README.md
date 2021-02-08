@@ -129,6 +129,7 @@ SGD and LinearSVM
 
 ##### Classification Report-
 
+```
 SGDClassifier accuracy : 0.875876492121598
                          
                          precision    recall  f1-score   support
@@ -140,6 +141,7 @@ SGDClassifier accuracy : 0.875876492121598
     CANCELLATION NOTICE       0.87      0.90      0.88      2358
      CHANGE ENDORSEMENT       0.87      0.90      0.89       181
             DECLARATION       0.51      0.33      0.40       227
+            
    DELETION OF INTEREST       0.92      0.91      0.92      1154
       EXPIRATION NOTICE       0.80      0.89      0.84       142
 INTENT TO CANCEL NOTICE       0.65      0.64      0.64        61
@@ -151,3 +153,4 @@ INTENT TO CANCEL NOTICE       0.65      0.64      0.64        61
                accuracy                           0.88     12566
               macro avg       0.78      0.80      0.79     12566
            weighted avg       0.87      0.87      0.88     12566
+```
