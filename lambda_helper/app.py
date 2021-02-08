@@ -52,9 +52,10 @@ def lambda_handler(event, context):
         
         # predict document classes and decode predictions
         predictions = model.predict(x)
+        confidence_mat = model.predict_proba(x)
         
         body['prediction'] = predictions[0]
-        body['confidence'] = predictions[0]
+        body['confidence'] = confidence_mat.max()
     
     #Create the response
     response = {

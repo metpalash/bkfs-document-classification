@@ -11,12 +11,17 @@ We need to train a document classification model. Deploy the model to a public c
 
 -Front end Page: ```front_end/```
 
+### Prediction ui
+```
+https://bkfsmodel.s3.amazonaws.com/index.html
+```
 
-###### Data Description -
-The data consist of 14 different category of documents
+### Rest API
+```
+https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict/
+```
 
-
-###### Data Description -
+###### Code Deploy to AWS -
 To deploy the code to AWS
 
 Clone the Git Repo -
@@ -32,7 +37,7 @@ Download the SAM CLI/Docker
 Create an AWS ECR Repository - 
 ```bash
 aws ecr create-repository --repository-name bkfs-doc-class-repo --image-tag-mutability IMMUTABLE --image-scanning-configuration scanOnPush=true
-``
+```
 
 Run the following Command - enter the ecr repository from previous step during
 deploy process whenever asked -
