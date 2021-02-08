@@ -5,48 +5,43 @@ This dataset represents the output of the OCR stage of our data pipeline.
 We need to train a document classification model. Deploy the model to a public cloud platform (AWS/Google/Azure/Heroku) as a webservice with a simple ui.
 
 ###### Project Folder Structure -
-Model Specific Files:
+-Model Specific Files: ```ml/```
 
-```ml/```
+-Restful Api: ```lambda_helper/```
 
-Restful Api:
-
-```lambda_helper/```
-
-Front end Page:
-
-```front_end/```
+-Front end Page: ```front_end/```
 
 
+###### Data Description -
+The data consist of 14 different category of documents
 
 
+###### Data Description -
+To deploy the code to AWS
 
+Clone the Git Repo -
+```bash
+git clone https://github.com/metpalash/bkfs-document-classification.git
+```
 
+Download the SAM CLI/Docker
+
+* SAM CLI - [Install the SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
+* Docker - [Install Docker community edition](https://hub.docker.com/search/?type=edition&offering=community)
+
+Create an AWS ECR Repository - 
+```bash
 aws ecr create-repository --repository-name bkfs-doc-class-repo --image-tag-mutability IMMUTABLE --image-scanning-configuration scanOnPush=true
+``
 
- "repository": {
-        "repositoryArn": "arn:aws:ecr:us-east-1:295040540869:repository/bkfs-doc-class-repo",
-        "registryId": "295040540869",
-        "repositoryName": "bkfs-doc-class-repo",
-        "repositoryUri": "295040540869.dkr.ecr.us-east-1.amazonaws.com/bkfs-doc-class-repo",
-        "createdAt": "2021-02-06T12:24:04-05:00",
-        "imageTagMutability": "IMMUTABLE",
-        "imageScanningConfiguration": {
-            "scanOnPush": true
-        },
-        "encryptionConfiguration": {
-            "encryptionType": "AES256"
-        }
-    }
+Run the following Command - enter the ecr repository from previous step during
+deploy process whenever asked -
+```bash
+sam build
+sam deploy --guided
+```
 
-Multi-Class Text Classification of products based on their description
-General info
-The project includes multi-class text classification with Machine Learning and Deep Learning algorithms, text classification with Doc2vec model, creation Word2vec model, Topic Modeling (with LDA analysis) and EDA analysis (data exploration, data aggregation and cleaning data).
 
-The dataset comes from http://makeup-api.herokuapp.com/ and has been obtained from my previous project at Extracting Data using API.
-
-Motivation
-The aim of the project is multi-class text classification to make-up products based on their description and categories. Based on given text as an input, we have predicted what would be the category. We have five types of categories corresponding to different makeup products. In our analysis we used a different methods for a feature extraction (such as Word2vec, Doc2vec) and various Machine Learning/Deep Lerning algorithms to get more accurate predictions and choose the most accurate one for our issue.
 
 Project contains:
 
@@ -98,24 +93,6 @@ This project contains source code and supporting files for a serverless applicat
 
 The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
 
-## Deploy the sample application
-
-The Serverless Application Model Command Line Interface (SAM CLI) is an extension of the AWS CLI that adds functionality for building and testing Lambda applications. It uses Docker to run your functions in an Amazon Linux environment that matches Lambda. It can also emulate your application's build environment and API.
-
-To use the SAM CLI, you need the following tools.
-
-* SAM CLI - [Install the SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
-* Docker - [Install Docker community edition](https://hub.docker.com/search/?type=edition&offering=community)
-
-You may need the following for local testing.
-* [Python 3 installed](https://www.python.org/downloads/)
-
-To build and deploy your application for the first time, run the following in your shell:
-
-```bash
-sam build
-sam deploy --guided
-```
 
 ## Use the SAM CLI to build and test locally
 
