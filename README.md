@@ -110,7 +110,12 @@ var url1 = "https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict/
 
   After getting the best pick among the algorithms, i have performed grid search to perform the hyperparameter tuning.
 
+- ```ml/model_ann.ipynb``` :
 
+  I had issues with implementing NN on my mac with m1 chip, tensorflow kept crashing on me. I tried to implement
+  something on google colab notebooks. This is an ANN notebook from google colab. Due to limited ram on the notebooks
+  if was not able to do a lot for nn. Basic NN i modeled didn't perform that well compared to the LinearSVM and SGD.
+  
 - ```ml/model_evaluation.ipynb``` :
 
   This notebook consist of the model_evaluation metrics on test data as well as overall data
@@ -131,6 +136,7 @@ var url1 = "https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict/
 | Logistic Regression| CV+TF-IDF     | 0.86     |
 | LinearSVM          | CV+TF-IDF     | 0.88     |
 | KNeighbour         | CV+TF-IDF     | 0.82     |
+| NN                 | Tokenizer     | 0.84     |
 
 
 ##### Best Performers-
