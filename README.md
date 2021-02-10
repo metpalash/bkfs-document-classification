@@ -22,6 +22,10 @@ https://bkfsmodel.s3.amazonaws.com/index.html
 ```
 https://et9cl4lp4l.execute-api.us-east-1.amazonaws.com/Prod/predict/
 ```
+#### SWAGGER API Documentation
+```
+https://app.swaggerhub.com/apis-docs/ladip21235/bk-doc-class/0.2
+```
 
 #### Sample Curl Request
 - GET - 
