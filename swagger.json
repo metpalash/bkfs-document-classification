@@ -1,0 +1,47 @@
+swagger: '2.0'
+info:
+  description: Document classification Api
+  version: '0.2'
+  title: BKFS-DOC-CLASSIFICATION
+paths:
+  /Prod/predict/:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - name: words
+          in: query
+          required: false
+          type: string
+          x-example: typeDocumentTextHere
+      responses:
+        '200':
+          description: GET API call, pass the document text to get the prediction and confidence back
+          schema:
+            $ref: '#/definitions/Response'
+    post:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: false
+          schema:
+            $ref: '#/definitions/Response'
+          x-examples:
+            application/json: '{"words":"putDocumentTextHere"}'
+      responses:
+        '200':
+          description: POST API call, pass the document text to get the prediction and confidence back
+          schema:
+            $ref: '#/definitions/Response'
+definitions:
+  Response:
+    properties:
+      prediction:
+        type: string
+      confidence:
+        type: number
+        format: double
